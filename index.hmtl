@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RTC RGC</title>
+</head>
+<body style="margin:0;background:black;">
+    <div id="game"></div>
+
+    <script src="loader.js"></script>
+</body>
+</html>
