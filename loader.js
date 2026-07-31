@@ -30,6 +30,8 @@ console.log("Launching:", game);
 console.log("ROM:", window.EJS_gameUrl);
 console.log("BIOS:", window.EJS_biosUrl);
 
+window.EJS_DEBUG_XX = true;
+
 // Load EmulatorJS
 const script = document.createElement("script");
 script.src = "data/loader.js";
