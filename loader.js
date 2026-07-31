@@ -13,17 +13,24 @@ if (!game) {
             No Game Selected
         </h1>
     `;
-} else {
-    document.body.innerHTML = `
-        <h1 style="
-            color:white;
-            font-family:Arial;
-            text-align:center;
-            margin-top:20%;
-        ">
-            Loading ${game}...
-        </h1>
-    `;
-
-    console.log("Loading:", game);
+    throw new Error("No game selected.");
 }
+
+const CDN = "https://pub-565dc742bafc4ce98e66a8ee199afad0.r2.dev";
+
+// EmulatorJS Configuration
+window.EJS_player = "#game";
+window.EJS_core = "psx";
+window.EJS_pathtodata = "data/";
+
+window.EJS_gameUrl = `${CDN}/ps1/${game}.chd`;
+window.EJS_biosUrl = `${CDN}/bios/scph5501.bin`;
+
+console.log("Launching:", game);
+console.log("ROM:", window.EJS_gameUrl);
+console.log("BIOS:", window.EJS_biosUrl);
+
+// Load EmulatorJS
+const script = document.createElement("script");
+script.src = "data/loader.js";
+document.body.appendChild(script);
