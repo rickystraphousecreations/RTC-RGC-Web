@@ -20,7 +20,7 @@ const CDN = "https://pub-565dc742bafc4ce98e66a8ee199afad0.r2.dev";
 
 // EmulatorJS Configuration
 window.EJS_player = "#game";
-window.EJS_core = "psx";
+window.EJS_core = "psx_rearmed";
 window.EJS_pathtodata = "data/";
 
 window.EJS_gameUrl = `${CDN}/ps1/${game}.chd`;
