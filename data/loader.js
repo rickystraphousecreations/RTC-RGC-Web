@@ -240,8 +240,20 @@ async function prepareLanguage() {
     window.EJS_adBlocked = (url, del) => window.EJS_emulator.adBlocked(url, del);
 
     const handlers = [
-        ["ready", window.EJS_ready],
-        ["start", window.EJS_onGameStart],
+        ["ready", () => {
+        console.log("READY EVENT");
+    }],
+
+    ["start", () => {
+        console.log("START EVENT");
+
+        const boot = document.getElementById("bootScreen");
+        if (boot) {
+            boot.classList.add("hide");
+            setTimeout(() => boot.remove(), 500);
+        }
+        }], 
+
         ["loadState", window.EJS_onLoadState],
         ["saveState", window.EJS_onSaveState],
         ["loadSave", window.EJS_onLoadSave],
