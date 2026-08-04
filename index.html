@@ -6,22 +6,61 @@
     <title>RTC RGC</title>
 
     <style>
-        html, body {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            overflow: hidden;
-        }
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+}
 
-        #game {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+#game {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#bootScreen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity .5s ease;
+}
+
+#bootScreen.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#bootVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
 </head>
 
 <body>
+
+<div id="bootScreen">
+    <video
+        id="bootVideo"
+        autoplay
+        muted
+        playsinline
+        preload="auto">
+
+        <source src="videos/rtc_boot.mp4" type="video/mp4">
+
+    </video>
+</div>
 
 <div id="game"></div>
 

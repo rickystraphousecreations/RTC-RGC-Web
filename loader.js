@@ -23,8 +23,6 @@ window.EJS_player = "#game";
 window.EJS_core = "pcsx_rearmed";
 window.EJS_pathtodata = "data/";
 
-window.EJS_startOnLoaded = true;
-
 window.EJS_gameUrl = `${CDN}/ps1/${game}.chd`;
 window.EJS_biosUrl = `${CDN}/bios/scph5501.bin`;
 
@@ -37,4 +35,19 @@ window.EJS_DEBUG_XX = true;
 // Load EmulatorJS
 const script = document.createElement("script");
 script.src = "data/loader.js";
+window.EJS_ready = function () {
+
+    console.log("RTC Ready");
+
+    const boot = document.getElementById("bootScreen");
+
+    boot.classList.add("hide");
+
+    setTimeout(() => {
+
+        boot.remove();
+
+    },500);
+
+};
 document.body.appendChild(script);
