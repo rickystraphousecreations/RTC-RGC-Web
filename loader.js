@@ -35,19 +35,4 @@ window.EJS_DEBUG_XX = true;
 // Load EmulatorJS
 const script = document.createElement("script");
 script.src = "data/loader.js";
-window.EJS_ready = function () {
-
-    console.log("RTC Ready");
-
-    const boot = document.getElementById("bootScreen");
-
-    boot.classList.add("hide");
-
-    setTimeout(() => {
-
-        boot.remove();
-
-    },500);
-
-};
 document.body.appendChild(script);
