@@ -60,4 +60,18 @@ window.EJS_ready = function () {
 // Load EmulatorJS
 const script = document.createElement("script");
 script.src = "data/loader.js";
+
+script.onload = () => {
+    const wait = setInterval(() => {
+        if (window.EJS_emulator) {
+            clearInterval(wait);
+
+            window.EJS_emulator.on("start", () => {
+                console.log("Game started");
+
+                hideBootScreen();
+            });
+        }
+    }, 50);
+};
 document.body.appendChild(script);
