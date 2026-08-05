@@ -34,44 +34,7 @@ console.log("BIOS:", window.EJS_biosUrl);
 
 window.EJS_DEBUG_XX = true;
 
-function hideBootScreen() {
-    const boot = document.getElementById("rtcBoot");
-
-    if (!boot) return;
-
-    boot.style.opacity = "0";
-
-    setTimeout(() => {
-        boot.remove();
-    }, 500);
-}
-
-window.EJS_ready = function () {
-    console.log("Emulator ready");
-
-    // Give the first frame a moment to render
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            hideBootScreen();
-        });
-    });
-};
-
 // Load EmulatorJS
 const script = document.createElement("script");
 script.src = "data/loader.js";
-
-script.onload = () => {
-    const wait = setInterval(() => {
-        if (window.EJS_emulator) {
-            clearInterval(wait);
-
-            window.EJS_emulator.on("start", () => {
-                console.log("Game started");
-
-                hideBootScreen();
-            });
-        }
-    }, 50);
-};
 document.body.appendChild(script);
