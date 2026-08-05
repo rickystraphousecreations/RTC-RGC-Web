@@ -568,12 +568,19 @@ class EmulatorJS {
     }
     // End start button
     createText() {
-        this.textElem = this.createElement("div");
-        this.textElem.classList.add("ejs_loading_text");
-        if (typeof this.config.backgroundImg === "string") this.textElem.classList.add("ejs_loading_text_glow");
-        this.textElem.innerText = this.localization("Loading...");
-        this.elements.parent.appendChild(this.textElem);
-    }
+    this.textElem = this.createElement("div");
+    this.textElem.classList.add("rtc_boot");
+
+    this.textElem.innerHTML = `
+        <img src="images/rtc_boot_screen.png" class="rtc_boot_logo">
+
+        <div class="rtc_loading">
+            Initializing RTC Retro Gaming Console...
+        </div>
+    `;
+
+    this.elements.parent.appendChild(this.textElem);
+}
     localization(text, log) {
         if (typeof text === "undefined" || text.length === 0) return;
         text = text.toString();
