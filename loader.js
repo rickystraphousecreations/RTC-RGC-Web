@@ -46,6 +46,17 @@ function hideBootScreen() {
     }, 500);
 }
 
+window.EJS_ready = function () {
+    console.log("Emulator ready");
+
+    // Give the first frame a moment to render
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            hideBootScreen();
+        });
+    });
+};
+
 // Load EmulatorJS
 const script = document.createElement("script");
 script.src = "data/loader.js";
